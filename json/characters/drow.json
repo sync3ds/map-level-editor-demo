@@ -1,0 +1,26 @@
+{
+	"file": "drow.glb",
+	"type": "character",
+	"materialOverride": {
+		"alphaMap": null
+	},
+	"objectOverride": {
+		"receiveShadow": false
+	},
+	"camera": {
+		"distanceFromFloor": 3.5,
+		"targetRadius": 6,
+		"lookAtOffset": 2.5
+	},
+	"physics": {
+		"mass": 500,
+		"speed": 1,
+		"rotationalSpeed": 4,
+		"jumpForce": 3500
+	},
+	"animations": {
+		"swapSpeed": 0.5,
+		"default": "idle",
+		"attack": [ "attack1", "attack2", "attack3" ]
+	}
+}

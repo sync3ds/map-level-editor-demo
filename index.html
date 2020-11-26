@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+
+		<title>WebGL Map Level Editor v0.1</title>
+
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="html-assets/js/owl-carousel/owl.carousel.min.css">
+		<link rel="stylesheet" href="html-assets/js/owl-carousel/owl.theme.default.min.css">
+		<link rel="stylesheet" href="html-assets/js/ui-range/ui-range.css" />
+		<link rel="stylesheet/less" type="text/css" href="html-assets/css/styles.less" />
+	</head>
+
+	<body>
+
+		<div id="login">
+
+		</div>
+
+		<div id="preloader">
+			<div class="preloader-wrap">
+				<div id="preloader-bar"></div>
+			</div>
+			<div id="preloader-msg"></div>
+		</div>
+
+		<div id="debugger"></div>
+
+		<div id="file-manager" class="show">
+			<div class="wrap">
+				<div id="new-scene-panel" class="panel open fixed">
+					<div class="panel-head">
+						<h2>Start New Scene</h2>
+					</div>
+					<div class="panel-body">
+						<input id="scene-name" type="text" name="scene-name" placeholder="Type scene name..." value="Test Scene">
+						<button id="btn-new-scene" class="btn">New Scene</button>
+					</div>
+				</div>
+				<div id="load-scene-panel" class="panel open fixed">
+					<div class="panel-head">
+						<h2>Load Scene</h2>
+					</div>
+					<div class="panel-body">
+						<button id="btn-load-scene" class="btn">Select File...</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="layout">
+			<div id="topbar">
+				<div id="logo"><img src="html-assets/img/logo.png"></div>
+				<div id="user"><img src="html-assets/img/user-avatar.jpg"></div>
+			</div>
+			<div id="utilities-bar">
+				<div class="slot unique">
+					<button id="action-move" class="action-move active" data-tippy-content="Move" data-tippy-placement="bottom"><img src="html-assets/img/icons/action-move.png"></button>
+					<button id="action-rotate" class="action-rotate" data-tippy-content="Rotate" data-tippy-placement="bottom"><img src="html-assets/img/icons/action-rotate.png"></button>
+					<button id="action-scale" class="action-scale" data-tippy-content="Scale" data-tippy-placement="bottom"><img src="html-assets/img/icons/action-scale.png"></button>
+				</div>
+				<div class="slot one-child">
+					<button id="scope-global" class="scope-global active" data-tippy-content="Global Scope" data-tippy-placement="bottom"><img src="html-assets/img/icons/scope-global.png"></button>
+					<button id="scope-local" class="scope-local" data-tippy-content="Local Scope" data-tippy-placement="bottom"><img src="html-assets/img/icons/scope-local.png"></button>
+				</div>
+				<div class="slot">
+					<button id="snap-move" class="snap-move active" data-tippy-content="Grid Snap" data-tippy-placement="bottom"><img src="html-assets/img/icons/snap-move.png"></button>
+					<button id="snap-move-size" class="snap-move-size with-arrow" data-tippy-content="Snap Value" data-tippy-placement="bottom">0.5</button>
+					<ul class="snap-move-sizes" data-ref="move">
+						<li>0.1</li>
+						<li class="active">0.5</li>
+						<li>1</li>
+						<li>5</li>
+						<li>10</li>
+					</ul>
+				</div>
+				<div class="slot">
+					<button id="snap-rotate" class="snap-rotate active" data-tippy-content="Rotate Snap" data-tippy-placement="bottom"><img src="html-assets/img/icons/snap-rotate.png"></button>
+					<button id="snap-rotate-size" class="snap-rotate-size with-arrow" data-tippy-content="Snap Value" data-tippy-placement="bottom">10&deg;</button>
+					<ul class="snap-rotate-sizes" data-ref="rotate">
+						<li>5&deg;</li>
+						<li class="active" data-val="10">10&deg;</li>
+						<li>30&deg;</li>
+						<li>45&deg;</li>
+						<li>60&deg;</li>
+						<li>90&deg;</li>
+					</ul>
+				</div>
+				<div class="slot">
+					<button id="snap-scale" class="snap-scale active" data-tippy-content="Scale Snap" data-tippy-placement="bottom"><img src="html-assets/img/icons/snap-scale.png"></button>
+					<button id="snap-scale-size" class="snap-scale-size with-arrow" data-tippy-content="Snap Value" data-tippy-placement="bottom">0.25</button>
+					<ul class="snap-scale-sizes small-padding" data-ref="scale">
+						<li>0.10</li>
+						<li class="active">0.25</li>
+						<li>0.50</li>
+						<li>0.75</li>
+						<li>1.00</li>
+					</ul>
+				</div>
+			</div>
+
+			<div id="left-sidebar">
+				<div class="panel">
+					<div class="panel-head">
+						<h2>World Settings</h2>
+						<span class="minimize-trigger"></span>
+					</div>
+					<div class="panel-body">
+						<h4>Sun</h4>
+						<div class="row range-container">
+							<label>Intensity</label>
+							<div class="range">
+								<input id="sun-intensity" type="range" min="0.1" max="6" value="0.5" step="0.1">
+								<output></output>
+								<div class='range__progress'></div>
+							</div>
+						</div>
+						<div class="row range-container">
+							<label>Turbidity</label>
+							<div class="range">
+								<input id="sun-turbidity" type="range" min="0" max="20" value="1" step="1">
+								<output></output>
+								<div class='range__progress'></div>
+							</div>
+						</div>
+						<div class="row range-container">
+							<label>Inclination</label>
+							<div class="range">
+								<input id="sun-inclination" type="range" min="0" max="3" value="1.16" step="0.01">
+								<output></output>
+								<div class='range__progress'></div>
+							</div>
+						</div>
+						<div class="row range-container">
+							<label>Azimuth</label>
+							<div class="range">
+								<input id="sun-azimuth" type="range" min="0.24" max="0.76" value="0.35" step="0.01">
+								<output></output>
+								<div class='range__progress'></div>
+							</div>
+						</div>
+
+						<h4>Sky</h4>
+						<div class="row range-container">
+							<label>Light Intensity</label>
+							<div class="range">
+								<input id="sky-intensity" type="range" min="0" max="6" value="1.5" step="0.1">
+								<output></output>
+								<div class='range__progress'></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel open">
+					<div class="panel-head">
+						<h2>Assets</h2>
+						<span class="minimize-trigger"></span>
+					</div>
+					<div class="panel-body">
+						<div class="select-field">
+							<select id="assets-packs-list"></select>
+						</div>
+						<div id="assets-lists" class="assets-list"></div>
+						<button id="btn-add-asset" class="btn">Add to Scene</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="right-sidebar">
+				<div class="panel open">
+					<div class="panel-head">
+						<h2>Objects List</h2>
+						<span class="minimize-trigger"></span>
+					</div>
+					<div class="panel-body">
+						<input id="obj-name" class="obj-name" type="text">
+						<ul id="obj-list" class="obj-list"></ul>
+					</div>
+				</div>
+				<div class="panel open">
+					<div class="panel-head">
+						<h2>Object Properties</h2>
+						<span class="minimize-trigger"></span>
+					</div>
+					<div class="panel-body">
+						<div class="row text-right">
+							<label>Position</label>
+							<input id="obj-pos-x" class="prop col-x" type="text" name="pos_x" value="0.0">
+							<input id="obj-pos-y" class="prop col-y" type="text" name="pos_y" value="0.0">
+							<input id="obj-pos-z" class="prop col-z" type="text" name="pos_z" value="0.0">
+						</div>
+						<div class="row text-right">
+							<label>Rotation</label>
+							<input id="obj-rot-x" class="prop col-x" type="text" name="rot_x" value="0.0">
+							<input id="obj-rot-y" class="prop col-y" type="text" name="rot_y" value="0.0">
+							<input id="obj-rot-z" class="prop col-z" type="text" name="rot_z" value="0.0">
+						</div>
+						<div class="row text-right">
+							<label>Scale</label>
+							<input id="obj-scl-x" class="prop col-x" type="text" name="scl_x" value="1.0">
+							<input id="obj-scl-y" class="prop col-y" type="text" name="scl_y" value="1.0">
+							<input id="obj-scl-z" class="prop col-z" type="text" name="scl_z" value="1.0">
+						</div>
+					</div>
+				</div>
+				<div class="panel">
+					<div class="panel-head">
+						<h2>Physics Properties</h2>
+						<span class="minimize-trigger"></span>
+					</div>
+					<div class="panel-body"></div>
+				</div>
+				<div class="panel">
+					<div class="panel-head">
+						<h2>Custom Properties</h2>
+						<span class="minimize-trigger"></span>
+					</div>
+					<div class="panel-body"></div>
+				</div>
+			</div>
+
+			<div id="settings">
+				<ul class="settings-options">
+					<li><button id="btn-create"></button></li>
+					<li><button id="btn-open"></button></li>
+					<li><button id="btn-save"></button></li>
+				</ul>
+				<input type="file" id="file-selector" accept="application/json">
+				<button class="btn-settings"></button>
+			</div>
+
+			<div id="editor"></div>
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/less" ></script>
+		<script src="https://unpkg.com/@popperjs/core@2"></script>
+		<script src="https://unpkg.com/tippy.js@6"></script>
+		<script src="html-assets/js/jquery-3.5.1.min.js"></script>
+		<script src="html-assets/js/owl-carousel/owl.carousel.min.js"></script>
+		<script src="html-assets/js/scripts.js"></script>
+		<script type="module">
+			import { LevelEditor } from "../build/editor.min.js";
+
+			var levelEditor = new LevelEditor(GUIManager);
+
+			jQuery(document).ready(function(){
+
+				GUIManager.init(levelEditor);
+
+				levelEditor.init();
+
+			});
+
+		</script>
+	</body>
+</html>

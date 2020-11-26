@@ -1,0 +1,8 @@
+{
+	"file": "droplet.glb",
+	"type": "static",
+	"animations": {
+		"swapSpeed": 0.5,
+		"default": "grow"
+	}
+}

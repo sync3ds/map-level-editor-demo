@@ -1,0 +1,25 @@
+{
+
+	"objects": [
+		{
+			"name": "Map",
+			"uid": "map",
+			"file": "map1.glb",
+			"type": "static"
+		}
+	],
+
+	"scene": {
+		"envMap": "unearthly-red-4k.hdr",
+		"backgroundMap": "night_sky",
+		"sunSettings": {
+			"intensity": 0.5,
+			"inclination": 1.06,
+			"azimuth": 0.38,
+			"skyColor": "#0e0e18",
+			"groundColor": "#000000",
+			"skyIntensity": 0.2
+		}
+	}
+
+}

@@ -1,0 +1,26 @@
+{
+	"file": "orc.glb",
+	"type": "character",
+	"materialOverride": {
+		"alphaMap": null
+	},
+	"objectOverride": {
+		"receiveShadow": false
+	},
+	"camera": {
+		"distanceFromFloor": 3.5,
+		"targetRadius": 8,
+		"lookAtOffset": 2.5
+	},
+	"physics": {
+		"mass": 500,
+		"speed": 3,
+		"rotationalSpeed": 5,
+		"jumpForce": 3500
+	},
+	"animations": {
+		"swapSpeed": 0.5,
+		"default": "idle",
+		"attack": [ "attack1", "attack2", "attack3", "attack4" ]
+	}
+}

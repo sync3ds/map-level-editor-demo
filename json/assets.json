@@ -1,0 +1,42 @@
+{
+
+	"props": [
+		{
+			"packName": "Medieval Walls",
+			"pathName": "medieval-walls",
+			"assets": [
+				{ "name": "Broken Wall", "uid": "broken-wall" },
+				{ "name": "Medieval Wall", "uid": "medieval-wall" },
+				{ "name": "Medieval Wall Column", "uid": "medieval-wall-column" },
+				{ "name": "Old Restored Wall", "uid": "old-restored-wall" },
+				{ "name": "Old Stone Fence", "uid": "old-stone-fence" },
+				{ "name": "Old Stone Fence Column", "uid": "old-stone-fence-column" },
+				{ "name": "Old Stone Wall", "uid": "old-stone-wall" },
+				{ "name": "Restored Wall", "uid": "restored-wall" },
+				{ "name": "Ruined Wall", "uid": "ruined-wall" },
+				{ "name": "Stone Wall", "uid": "stone-wall" }
+			]
+		},
+		{
+			"packName": "Floors",
+			"pathName": "floors",
+			"assets": [
+				{ "name": "Old Floor", "uid": "old-floor" }
+			]
+		}
+	],
+
+	"characters": [
+		{
+			"name": "Drow",
+			"uid": "drow",
+			"reference": "characters/drow"
+		},
+		{
+			"name": "Orc",
+			"uid": "orc",
+			"reference": "characters/orc"
+		}
+	]
+
+}
