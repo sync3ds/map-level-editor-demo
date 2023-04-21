@@ -18,10 +18,28 @@
 			]
 		},
 		{
+			"packName": "Medieval Buildings",
+			"pathName": "medieval-buildings",
+			"assets": [
+				{ "name": "Medieval House", "uid": "medieval-house-01"},
+				{	"name": "Medieval House with Stairs", "uid": "medieval-house-stairs1" },
+				{	"name": "Medieval House 2", "uid": "large-medieval-house2" }
+			]
+		},
+		{
 			"packName": "Floors",
 			"pathName": "floors",
 			"assets": [
 				{ "name": "Old Floor", "uid": "old-floor" }
+			]
+		},
+		{
+			"packName": "Nature",
+			"pathName": "nature",
+			"assets": [
+				{ "name": "Logs pile", "uid": "log-pile" },
+				{	"name": "Tree - no leaves", "uid": "tree-no-leaves"	},
+				{	"name": "Old tree", "uid": "old-tree"	}
 			]
 		}
 	],
